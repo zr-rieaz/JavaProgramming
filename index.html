@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // In accordance with environment constraints: HMR Disabled, ignore WebSocket errors
+      (function() {
+        var origError = console.error;
+        console.error = function() {
+          var firstArg = arguments[0];
+          if (typeof firstArg === 'string') {
+            if (firstArg.startsWith('[vite]') || firstArg.includes('websocket') || firstArg.includes('WebSocket')) {
+              return;
+            }
+          }
+          origError.apply(console, arguments);
+        };
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#020617" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="JavaMaster" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate icon" href="/favicon.ico" />
+    <title>Java Master Pro - Digital Book & Reference Manual</title>
+    <meta name="description" content="Professional Java Programming Digital Book & Interactive Reference Manual covering 15 comprehensive chapters, core architecture, OOP, memory models, and verified practice problem bank." />
+    <meta property="og:title" content="Java Master Pro - Digital Book & Reference Manual" />
+    <meta property="og:description" content="Professional Java Programming Digital Book & Interactive Reference Manual covering 15 comprehensive chapters, core architecture, OOP, memory models, and verified practice problem bank." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
